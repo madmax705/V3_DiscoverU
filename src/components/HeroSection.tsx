@@ -24,6 +24,9 @@ const HeroSection = () => {
           </CardBody>
         </CardContainer>
       </div>
+
+      {/* This component does not seem to have images that need lazy loading based on its structure. If there are images here, they should be added with loading="lazy". For now, I'm cleaning up the incorrect additions. */}
+
     </div>
   );
 };

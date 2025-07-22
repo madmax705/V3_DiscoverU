@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import { AlertCircle } from "lucide-react";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -11,11 +13,16 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [grade, setGrade] = useState("");
+  const navigate = useNavigate();
+  const { signUp } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
+    setSuccessMessage("");
 
     // Basic validation
     if (password !== confirmPassword) {
@@ -24,18 +31,31 @@ const Signup = () => {
       return;
     }
 
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long");
+      setIsLoading(false);
+      return;
+    }
+
+    if (!grade) {
+      setError("Please select your grade");
+      setIsLoading(false);
+      return;
+    }
+
     try {
-      // Here you would implement actual signup logic
-      // For now, we'll just simulate a signup process
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const { error, data } = await signUp(email, password, name, grade);
 
-      // Simulate successful signup
-      console.log("Signed up with:", { name, email, password });
+      if (error) {
+        throw error;
+      }
 
-      // Redirect to home page after successful signup
-      window.location.href = "/";
-    } catch (err) {
-      setError("Failed to create account. Please try again.");
+      // On successful signup, always navigate to the home page.
+      // The AuthProvider will handle the session and user state.
+      navigate("/");
+
+    } catch (err: any) {
+      setError(err.message || "Failed to create account. Please try again.");
       console.error("Signup error:", err);
     } finally {
       setIsLoading(false);
@@ -66,31 +86,62 @@ const Signup = () => {
         </div>
 
         {error && (
-          <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
+          <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-4 flex items-center">
+            <AlertCircle className="h-5 w-5 text-red-500 mr-2" />
             <p className="text-red-700">{error}</p>
+          </div>
+        )}
+
+        {successMessage && (
+          <div className="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
+            <p className="text-green-700">{successMessage}</p>
           </div>
         )}
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
-            <div>
-              <Label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Full Name
-              </Label>
-              <Input
-                id="name"
-                name="name"
-                type="text"
-                autoComplete="name"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                placeholder="John Doe"
-              />
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex-1">
+                <Label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Full Name
+                </Label>
+                <Input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  placeholder=""
+                />
+              </div>
+              <div className="flex-1">
+                <Label
+                  htmlFor="grade"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Your Grade
+                </Label>
+                <select
+                  id="grade"
+                  name="grade"
+                  required
+                  value={grade}
+                  onChange={(e) => setGrade(e.target.value)}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white"
+                >
+                  <option value="" disabled>Select grade</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+              </div>
             </div>
             <div>
               <Label
@@ -108,7 +159,7 @@ const Signup = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                placeholder="you@example.com"
+                placeholder=""
               />
             </div>
             <div>
@@ -118,17 +169,25 @@ const Signup = () => {
               >
                 Password
               </Label>
-              <Input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="new-password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                placeholder="••••••••"
-              />
+              <div className="relative">
+                <Input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="new-password"
+                  required
+                  minLength={6}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  placeholder=""
+                />
+                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  <span className="text-xs text-gray-500 bg-gradient-to-r from-gray-100 to-gray-200 px-2 py-0.5 rounded">
+                    6+ characters
+                  </span>
+                </div>
+              </div>
             </div>
             <div>
               <Label
@@ -143,10 +202,11 @@ const Signup = () => {
                 type="password"
                 autoComplete="new-password"
                 required
+                minLength={6}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                placeholder="••••••••"
+                placeholder=""
               />
             </div>
           </div>

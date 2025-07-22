@@ -179,6 +179,16 @@
   pointer-events: none;
 }
 
+/* About page specific blob styles */
+.about-blob-container {
+  position: absolute;
+  z-index: 0;
+  overflow: visible;
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
 @keyframes float {
   0%,
   100% {
@@ -207,8 +217,32 @@
   }
 }
 
+@keyframes about-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(30px) rotate(10deg);
+  }
+}
+
+@keyframes about-float-no-spin {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(40px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .blob--blue,
-.blob--purple {
+.blob--purple,
+.about-blob--blue,
+.about-blob--purple {
   transform-box: fill-box;
 }
 
@@ -230,6 +264,24 @@
   transition: all 0.3s ease;
 }
 
+/* About page specific blob animations */
+.about-blob--blue {
+  fill: #0099ff;
+  opacity: 0.7;
+  transform-origin: center;
+  animation: about-float 12s ease-in-out infinite;
+  mix-blend-mode: multiply;
+}
+
+.about-blob--purple {
+  fill: #e55cff;
+  opacity: 0.7;
+  transform-origin: center;
+  animation: about-float-no-spin 8s ease-in-out infinite reverse;
+  mix-blend-mode: multiply;
+  transform: rotate(180deg) skew(90deg, 50deg);
+}
+
 .blob-container:hover {
   box-shadow:
     0 0 0 2px rgba(229, 92, 255, 0.3),
@@ -248,4 +300,31 @@
   fill: #f066ff;
   opacity: 1;
   filter: brightness(1.2);
+}
+
+.about-blob-container:hover .about-blob--blue {
+  fill: #33adff;
+  filter: brightness(1.2);
+}
+
+.about-blob-container:hover .about-blob--purple {
+  fill: #f066ff;
+  opacity: 0.8;
+  filter: brightness(1.2);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 3s ease infinite;
 }

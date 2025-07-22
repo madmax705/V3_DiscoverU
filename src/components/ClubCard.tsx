@@ -1,142 +1,93 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
-import { Button } from "./ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Bookmark, Star } from "lucide-react";
+import { useBookmarks } from "../hooks/useBookmarks";
 import { Badge } from "./ui/badge";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "./ui/tooltip";
-import { Users, User } from "lucide-react";
+import { Club } from '../lib/supabase-client';
+import { useNavigate } from "react-router-dom";
 
 interface ClubCardProps {
-  id?: string;
-  name?: string;
-  category?: string;
-  description?: string;
-  meetingTimes?: string;
-  advisor?: string;
-  memberCount?: number;
-  logoUrl?: string;
-  onLearnMore?: () => void;
-  onNameClick?: () => void;
-  onImageClick?: () => void;
+  club: Club;
+  onExplore: (clubId: string) => void;
+  isJoined?: boolean;
+  averageRating?: number;
+  ratingCount?: number;
 }
 
-const ClubCard = ({
-  id = "chess-club",
-  name = "Chess Club",
-  category = "Games & Recreation",
-  description = "A place for chess enthusiasts to gather, learn, and compete in a friendly environment.",
-  meetingTimes = "Mondays & Wednesdays, 3:30 PM",
-  advisor = "Dr. Smith",
-  memberCount = 24,
-  logoUrl = "https://api.dicebear.com/7.x/avataaars/svg?seed=chess",
-  onLearnMore,
-  onNameClick,
-  onImageClick,
-}: ClubCardProps) => {
+const ClubCard: React.FC<ClubCardProps> = ({ club, onExplore, isJoined, averageRating = 0, ratingCount = 0 }) => {
   const navigate = useNavigate();
+  const { isBookmarked, toggleBookmark } = useBookmarks();
 
-  const handleExplore = () => {
-    navigate(`/club/${id}`);
+  const bookmarked = isBookmarked(club.id.toString());
+
+  const handleBookmarkClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    toggleBookmark(club.id.toString());
   };
 
-  const handleNameClick = () => {
-    if (onNameClick) {
-      onNameClick();
-    }
-  };
-
-  const handleImageClick = () => {
-    if (onImageClick) {
-      onImageClick();
-    }
+  const handleExploreClick = () => {
+    navigate(`/club/${club.slug}`);
   };
 
   return (
-    <Card className="w-[350px] h-[400px] backdrop-blur-sm bg-white/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 rounded-2xl overflow-hidden border-2">
-      <CardHeader>
-        <div className="flex items-center gap-4">
-          <Avatar
-            className="w-16 h-16 cursor-pointer"
-            onClick={handleImageClick}
-          >
-            <AvatarImage src={logoUrl} alt={name} />
-            <AvatarFallback>{name.slice(0, 2).toUpperCase()}</AvatarFallback>
-          </Avatar>
-          <div>
-            <CardTitle
-              className="text-xl text-black cursor-pointer hover:text-blue-600 transition-colors"
-              onClick={handleNameClick}
-            >
-              {name}
-            </CardTitle>
-            <Badge variant="secondary" className="mt-1 text-white">
-              {category}
-            </Badge>
+    <div
+      className="group relative cursor-pointer overflow-hidden rounded-xl bg-white shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+      onClick={handleExploreClick}
+    >
+      {isJoined && (
+        <span className="absolute left-3 top-3 z-20 text-green-500 bg-white rounded-full p-1 shadow" title="You have joined this club">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </span>
+      )}
+      <div className="relative h-48 w-full">
+        <img
+          src={club.image_url || '/placeholder.jpg'}
+          alt={club.name}
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          style={{ willChange: "transform" }}
+          loading="lazy"
+          decoding="async"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+      </div>
+      <button
+        onClick={handleBookmarkClick}
+        className="absolute right-3 top-3 z-10 rounded-full bg-white/80 p-2 text-gray-700 backdrop-blur-sm transition-colors hover:bg-white"
+        aria-label={bookmarked ? "Remove from bookmarks" : "Add to bookmarks"}
+      >
+        <Bookmark
+          className={`h-5 w-5 ${bookmarked ? "fill-current text-blue-600" : ""
+            }`}
+        />
+      </button>
+      <div className="p-4">
+        <h3 className="truncate text-lg font-bold text-gray-900">{club.name}</h3>
+        <Badge variant="secondary" className="mt-1">
+          {club.category}
+        </Badge>
+
+        {/* Rating Display */}
+        {ratingCount > 0 && (
+          <div className="flex items-center gap-1 mt-2">
+            <div className="flex items-center gap-1">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Star
+                  key={star}
+                  className={`w-3 h-3 ${star <= Math.round(averageRating)
+                      ? 'text-yellow-400 fill-current'
+                      : 'text-gray-300'
+                    }`}
+                />
+              ))}
+            </div>
+            <span className="text-xs text-gray-600 ml-1">
+              {averageRating.toFixed(1)} ({ratingCount})
+            </span>
           </div>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <CardDescription className="text-sm line-clamp-3 mb-4 text-black">
-          {description}
-        </CardDescription>
-
-        <Button
-          className="w-full py-6 text-lg font-medium mt-4 bg-blue-600 hover:bg-blue-700 transition-colors"
-          onClick={handleExplore}
-        >
-          Explore
-        </Button>
-
-        <div className="flex justify-between items-center mt-4">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <User className="w-4 h-4" />
-                  <span>{advisor}</span>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Club Advisor</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <Users className="w-4 h-4" />
-                  <span>{memberCount} members</span>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Member Count</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </div>
-      </CardContent>
-      <CardFooter>
-        <div className="w-full flex justify-between items-center text-xs text-gray-500">
-          <span>See full details</span>
-          <span>{category}</span>
-        </div>
-      </CardFooter>
-    </Card>
+        )}
+      </div>
+    </div>
   );
 };
 

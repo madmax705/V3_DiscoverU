@@ -214,20 +214,39 @@ const generateDefaultClubData = (club: Partial<ClubData>): ClubData => {
 // Import club data from ClubsPage.tsx
 const clubsFromPage = [
   {
-    id: "aquarist-club",
+    id: "the-aquarist",
     name: "The Aquarist",
-    category: "Academics",
+    category: "Science",
     description:
-      "Explore marine biology and aquatic ecosystems through hands-on projects and research.",
-    meetingTimes: "Tuesdays, 3:30 PM",
+      "The Aquarist Club is dedicated to exploring and understanding aquatic ecosystems. We study marine biology, freshwater systems, and aquarium science. Our activities include aquarium maintenance, fish breeding, water quality testing, and educational workshops about aquatic life.",
+    meetingTimes: "Every Thursday, 4:00 PM",
     advisor: "Dr. Fisher",
-    memberCount: 18,
+    memberCount: 45,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=aquarist",
-    imageUrl:
-      "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/TheAquarist.jpg",
     tagline: "Dive into the fascinating world of aquatic life",
     mission:
-      "To promote understanding and appreciation of aquatic ecosystems through education and hands-on experiences.",
+      "To foster appreciation and understanding of aquatic life through hands-on experience and scientific inquiry.",
+    bannerUrl: "/ClubBannerPhoto/TheAquarist.jpg",
+    coverUrl: "/ClubCoverPhotos/TheAquarist.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/TheAquarist1.jpg",
+        caption: "Our main aquarium display",
+      },
+      {
+        url: "/ClubGalleryPhotos/TheAquarist2.jpg",
+        caption: "Water quality testing session",
+      },
+      {
+        url: "/ClubGalleryPhotos/TheAquarist3.jpg",
+        caption: "Marine biology workshop",
+      },
+      {
+        url: "/ClubGalleryPhotos/TheAquarist4.jpg",
+        caption: "Freshwater ecosystem study",
+      },
+    ],
   },
   {
     id: "flute-club",
@@ -239,11 +258,30 @@ const clubsFromPage = [
     advisor: "Ms. Melody",
     memberCount: 12,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=flute",
-    imageUrl:
-      "https://images.unsplash.com/photo-1621628898826-8956e10449eb?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/FluteClub.jpg",
     tagline: "Harmonize your passion for music",
     mission:
-      "To cultivate musical talent and provide performance opportunities for flute enthusiasts.",
+      "To foster musical excellence and cultural appreciation through the art of flute playing.",
+    bannerUrl: "/ClubBannerPhoto/FluteClub.jpg",
+    coverUrl: "/ClubCoverPhotos/FluteClub.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/FluteClub1.jpg",
+        caption: "Flute Club performance",
+      },
+      {
+        url: "/ClubGalleryPhotos/FluteClub2.jpg",
+        caption: "Flute Club practice session",
+      },
+      {
+        url: "/ClubGalleryPhotos/FluteClub3.jpg",
+        caption: "Flute Club concert",
+      },
+      {
+        url: "/ClubGalleryPhotos/FluteClub4.jpg",
+        caption: "Flute Club workshop",
+      },
+    ],
   },
   {
     id: "linguistics-club",
@@ -255,11 +293,30 @@ const clubsFromPage = [
     advisor: "Dr. Wordsmith",
     memberCount: 15,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=linguistics",
-    imageUrl:
-      "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/LinguisticClub.jpg",
     tagline: "Unlocking the power of language",
     mission:
-      "To foster appreciation for linguistic diversity and promote understanding of language structures and evolution.",
+      "To explore and celebrate the diversity of languages and cultures through interactive learning and cultural exchange.",
+    bannerUrl: "/ClubBannerPhoto/LinguisticClub.jpg",
+    coverUrl: "/ClubCoverPhotos/LinguisticClub.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/LinguisticClub1.jpg",
+        caption: "Language workshop",
+      },
+      {
+        url: "/ClubGalleryPhotos/LinguisticClub2.jpg",
+        caption: "Cultural exchange event",
+      },
+      {
+        url: "/ClubGalleryPhotos/LinguisticClub3.jpg",
+        caption: "Language learning session",
+      },
+      {
+        url: "/ClubGalleryPhotos/LinguisticClub4.jpg",
+        caption: "Intercultural dialogue",
+      },
+    ],
   },
   {
     id: "economics-society",
@@ -271,11 +328,30 @@ const clubsFromPage = [
     advisor: "Mr. Keynes",
     memberCount: 20,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=economics",
-    imageUrl:
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/EconomicSociety.jpg",
     tagline: "Understanding the world through economic principles",
     mission:
-      "To promote economic literacy and critical thinking about financial systems and policies.",
+      "To foster understanding of economic principles and their real-world applications through discussion and analysis.",
+    bannerUrl: "/ClubBannerPhoto/EconomicSociety.jpg",
+    coverUrl: "/ClubCoverPhotos/EconomicSociety.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/EconomicSociety1.jpg",
+        caption: "Economics Society meeting",
+      },
+      {
+        url: "/ClubGalleryPhotos/EconomicSociety2.jpg",
+        caption: "Economics Society discussion",
+      },
+      {
+        url: "/ClubGalleryPhotos/EconomicSociety3.jpg",
+        caption: "Economics Society workshop",
+      },
+      {
+        url: "/ClubGalleryPhotos/EconomicSociety4.jpg",
+        caption: "Economics Society competition",
+      },
+    ],
   },
   {
     id: "cancer-club",
@@ -287,11 +363,30 @@ const clubsFromPage = [
     advisor: "Ms. Hope",
     memberCount: 25,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=cancer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/CancerClub.jpg",
     tagline: "Supporting cancer awareness and research",
     mission:
-      "To raise awareness about cancer prevention and support cancer research through community engagement and fundraising.",
+      "To raise awareness about cancer prevention and support those affected by cancer through education and community service.",
+    bannerUrl: "/ClubBannerPhoto/CancerClub.jpg",
+    coverUrl: "/ClubCoverPhotos/CancerClub.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/CancerClub1.jpg",
+        caption: "Cancer Club fundraiser"
+      },
+      {
+        url: "/ClubGalleryPhotos/CancerClub2.jpg",
+        caption: "Cancer Club awareness event"
+      },
+      {
+        url: "/ClubGalleryPhotos/CancerClub3.jpg",
+        caption: "Cancer Club workshop"
+      },
+      {
+        url: "/ClubGalleryPhotos/CancerClub4.jpg",
+        caption: "Cancer Club community service"
+      }
+    ],
   },
   {
     id: "reptile-club",
@@ -303,27 +398,127 @@ const clubsFromPage = [
     advisor: "Mr. Scales",
     memberCount: 14,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=reptile",
-    imageUrl:
-      "https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/ReptileClub.jpg",
     tagline: "Exploring the fascinating world of reptiles",
     mission:
-      "To promote understanding and conservation of reptiles through education and hands-on care experiences.",
+      "To promote understanding and appreciation of reptiles through education and hands-on experiences.",
+    bannerUrl: "/ClubBannerPhoto/ReptileClub.jpg",
+    coverUrl: "/ClubCoverPhotos/ReptileClub.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/ReptileClub1.jpg",
+        caption: "Reptile Club meeting"
+      },
+      {
+        url: "/ClubGalleryPhotos/ReptileClub2.jpg",
+        caption: "Reptile Club activity"
+      },
+      {
+        url: "/ClubGalleryPhotos/ReptileClub3.jpg",
+        caption: "Reptile Club workshop"
+      },
+      {
+        url: "/ClubGalleryPhotos/ReptileClub4.jpg",
+        caption: "Reptile Club field trip"
+      }
+    ],
   },
   {
     id: "theatre-team",
     name: "Theatre Team",
-    category: "Creativity",
+    tagline: "Breaking Brilliance - Student-led Theatre Collective",
     description:
-      "Produce and perform in theatrical productions throughout the school year.",
-    meetingTimes: "Mondays & Wednesdays, 4:00 PM",
-    advisor: "Ms. Stage",
-    memberCount: 30,
-    logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=theatre",
-    imageUrl:
-      "https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?ixlib=rb-4.0.3&q=85&w=800&h=600",
-    tagline: "Bringing stories to life on stage",
+      "Founded by Thomas Chen in September 2024.",
+    category: "Arts",
+    foundedYear: 2024,
+    memberCount: 25,
+    meetingTimes: "Rehearsal session may vary",
+    location: "Drama Studio",
+    advisor: "Thomas Chen",
     mission:
-      "To cultivate theatrical talent and provide opportunities for creative expression through performance arts.",
+      "Theatre Team, also known as Breaking Brilliance, is the first student-led theatre collective at SUIS Gubei Campus. Created to explore bold, original, and daring performance work — driven entirely by students — the collective now boasts a growing cast of 25 members.",
+    bannerUrl: "/ClubBannerPhoto/TheatreTeam.jpg",
+    coverUrl: "/ClubCoverPhotos/TheatreTeam.jpg",
+    imageUrl: "/ClubBannerPhoto/TheatreTeam.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/TheatreTeam1.jpg",
+        caption: "Theatre Team performance"
+      },
+      {
+        url: "/ClubGalleryPhotos/TheatreTeam2.jpg",
+        caption: "Theatre Team rehearsal"
+      },
+      {
+        url: "/ClubGalleryPhotos/TheatreTeam3.jpg",
+        caption: "Theatre Team workshop"
+      },
+      {
+        url: "/ClubGalleryPhotos/TheatreTeam4.jpg",
+        caption: "Theatre Team team photo"
+      }
+    ],
+    leaders: [
+      {
+        name: "Thomas Chen",
+        role: "Founder & Director",
+        photoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=thomas",
+        email: "thomaschen410@outlook.com",
+      },
+    ],
+    upcomingEvents: [
+      {
+        title: "Auditions for New Members",
+        date: "September 2025",
+        time: "TBD",
+        location: "Drama Studio",
+        description: "Auditions for new members joining the Theatre Team.",
+      },
+    ],
+    testimonials: [
+      {
+        quote: "Breaking Brilliance has been an incredible journey of artistic exploration and growth.",
+        name: "Thomas Chen",
+        role: "Founder & Director",
+        avatarUrl: "/Characters/character_6.png",
+      },
+    ],
+    socialLinks: [
+      { platform: "Instagram", url: "#", icon: "instagram" },
+    ],
+    resources: [
+      {
+        title: "SE7EN Production Guide",
+        description: "Documentation of our first original production 'SE7EN'.",
+        url: "#",
+        type: "document" as const,
+      },
+      {
+        title: "Treason's Edge Production Guide",
+        description: "Documentation of our second original production 'Treason's Edge'.",
+        url: "#",
+        type: "document" as const,
+      },
+    ],
+    opportunities: [
+      {
+        title: "Audition for New Members",
+        description: "Join our growing collective of student performers.",
+        commitment: "Varies by role",
+      },
+    ],
+    achievements: [
+      {
+        title: "First Original Production - SE7EN",
+        date: "2024",
+        description: "Debut of our first original production",
+      },
+      {
+        title: "Second Original Production - Treason's Edge",
+        date: "2024",
+        description: "Successfully staged our second original production",
+      },
+    ],
   },
   {
     id: "football-team",
@@ -335,11 +530,30 @@ const clubsFromPage = [
     advisor: "Coach Wilson",
     memberCount: 35,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=football",
-    imageUrl:
-      "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/FootballTeam.jpg",
     tagline: "Building champions on and off the field",
     mission:
       "To develop athletic excellence, teamwork, and sportsmanship through competitive football.",
+    bannerUrl: "/ClubBannerPhoto/FootballTeam.jpg",
+    coverUrl: "/ClubCoverPhotos/FootballTeam.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/FootballTeam1.jpg",
+        caption: "Football Team practice session",
+      },
+      {
+        url: "/ClubGalleryPhotos/FootballTeam2.jpg",
+        caption: "Football Team game",
+      },
+      {
+        url: "/ClubGalleryPhotos/FootballTeam3.jpg",
+        caption: "Football Team celebration",
+      },
+      {
+        url: "/ClubGalleryPhotos/FootballTeam4.jpg",
+        caption: "Football Team team photo",
+      },
+    ],
   },
   {
     id: "basketball-team",
@@ -351,11 +565,30 @@ const clubsFromPage = [
     advisor: "Coach Johnson",
     memberCount: 24,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=basketball",
-    imageUrl:
-      "https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/BasketballTeam.jpg",
     tagline: "Shooting for excellence",
     mission:
-      "To foster basketball skills, teamwork, and competitive spirit through training and competition.",
+      "To develop basketball skills, teamwork, and competitive spirit while promoting sportsmanship.",
+    bannerUrl: "/ClubBannerPhoto/BasketballTeam.jpg",
+    coverUrl: "/ClubCoverPhotos/BasketballTeam.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/BasketballTeam1.jpg",
+        caption: "Basketball Team practice session",
+      },
+      {
+        url: "/ClubGalleryPhotos/BasketballTeam2.jpg",
+        caption: "Basketball Team game",
+      },
+      {
+        url: "/ClubGalleryPhotos/BasketballTeam3.jpg",
+        caption: "Basketball Team celebration",
+      },
+      {
+        url: "/ClubGalleryPhotos/BasketballTeam4.jpg",
+        caption: "Basketball Team team photo",
+      },
+    ],
   },
   {
     id: "volleyball-team",
@@ -367,11 +600,30 @@ const clubsFromPage = [
     advisor: "Coach Smith",
     memberCount: 18,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=volleyball",
-    imageUrl:
-      "https://images.unsplash.com/photo-1592656094267-764a45160876?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/VolleyballTeam.jpg",
     tagline: "Spiking our way to victory",
     mission:
-      "To develop volleyball skills and promote teamwork through practice and competition.",
+      "To develop volleyball skills, teamwork, and competitive spirit while promoting sportsmanship.",
+    bannerUrl: "/ClubBannerPhoto/VolleyballTeam.jpg",
+    coverUrl: "/ClubCoverPhotos/VolleyballTeam.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/VolleyballTeam1.jpg",
+        caption: "Volleyball Team practice session",
+      },
+      {
+        url: "/ClubGalleryPhotos/VolleyballTeam2.jpg",
+        caption: "Volleyball Team game",
+      },
+      {
+        url: "/ClubGalleryPhotos/VolleyballTeam3.jpg",
+        caption: "Volleyball Team celebration",
+      },
+      {
+        url: "/ClubGalleryPhotos/VolleyballTeam4.jpg",
+        caption: "Volleyball Team team photo",
+      },
+    ],
   },
   {
     id: "bpc-club",
@@ -383,11 +635,30 @@ const clubsFromPage = [
     advisor: "Ms. Business",
     memberCount: 22,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=bpc",
-    imageUrl:
-      "https://images.unsplash.com/photo-1573497491765-55a64cc0144c?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/BPCClub.jpg",
     tagline: "Developing tomorrow's business leaders",
     mission:
-      "To cultivate professional communication skills and business acumen through practical experiences.",
+      "To develop business and professional skills through real-world projects and networking opportunities.",
+    bannerUrl: "/ClubBannerPhoto/BPCClub.jpg",
+    coverUrl: "/ClubCoverPhotos/BPCClub.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/BPCClub1.jpg",
+        caption: "BPC Club meeting",
+      },
+      {
+        url: "/ClubGalleryPhotos/BPCClub2.jpg",
+        caption: "BPC Club workshop",
+      },
+      {
+        url: "/ClubGalleryPhotos/BPCClub3.jpg",
+        caption: "BPC Club competition",
+      },
+      {
+        url: "/ClubGalleryPhotos/BPCClub4.jpg",
+        caption: "BPC Club networking event",
+      },
+    ],
   },
   {
     id: "math-clinic",
@@ -399,11 +670,30 @@ const clubsFromPage = [
     advisor: "Dr. Calculus",
     memberCount: 16,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=math",
-    imageUrl:
-      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/MathClinic.jpg",
     tagline: "Making math accessible and enjoyable",
     mission:
-      "To support mathematical learning through peer tutoring and promote excellence in mathematics.",
+      "To provide peer tutoring and support in mathematics, helping students build confidence and improve their skills.",
+    bannerUrl: "/ClubBannerPhoto/MathClinic.jpg",
+    coverUrl: "/ClubCoverPhotos/MathClinic.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/MathClinic1.jpg",
+        caption: "Math Clinic tutoring session",
+      },
+      {
+        url: "/ClubGalleryPhotos/MathClinic2.jpg",
+        caption: "Math Clinic practice session",
+      },
+      {
+        url: "/ClubGalleryPhotos/MathClinic3.jpg",
+        caption: "Math Clinic competition",
+      },
+      {
+        url: "/ClubGalleryPhotos/MathClinic4.jpg",
+        caption: "Math Clinic community service",
+      },
+    ],
   },
   {
     id: "english-clinic",
@@ -415,11 +705,30 @@ const clubsFromPage = [
     advisor: "Ms. Wordsworth",
     memberCount: 14,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=english",
-    imageUrl:
-      "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/EnglishClinic.jpg",
     tagline: "Crafting words, shaping minds",
     mission:
-      "To enhance English language skills and foster appreciation for literature through peer support and collaborative learning.",
+      "To provide peer tutoring and support in English, helping students improve their reading, writing, and communication skills.",
+    bannerUrl: "/ClubBannerPhoto/EnglishClinic.jpg",
+    coverUrl: "/ClubCoverPhotos/EnglishClinic.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/EnglishClinic1.jpg",
+        caption: "English Clinic tutoring session",
+      },
+      {
+        url: "/ClubGalleryPhotos/EnglishClinic2.jpg",
+        caption: "English Clinic practice session",
+      },
+      {
+        url: "/ClubGalleryPhotos/EnglishClinic3.jpg",
+        caption: "English Clinic competition",
+      },
+      {
+        url: "/ClubGalleryPhotos/EnglishClinic4.jpg",
+        caption: "English Clinic community service",
+      },
+    ],
   },
   {
     id: "art-team",
@@ -431,11 +740,30 @@ const clubsFromPage = [
     advisor: "Ms. Picasso",
     memberCount: 20,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=art",
-    imageUrl:
-      "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/ArtTeam.jpg",
     tagline: "Expressing creativity through visual arts",
     mission:
-      "To provide opportunities for artistic expression and development through various mediums and exhibitions.",
+      "To foster creativity and artistic expression through various forms of visual art.",
+    bannerUrl: "/ClubBannerPhoto/ArtTeam.jpg",
+    coverUrl: "/ClubCoverPhotos/ArtTeam.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/ArtTeam1.jpg",
+        caption: "Art Team exhibition",
+      },
+      {
+        url: "/ClubGalleryPhotos/ArtTeam2.jpg",
+        caption: "Art Team workshop",
+      },
+      {
+        url: "/ClubGalleryPhotos/ArtTeam3.jpg",
+        caption: "Art Team collaboration",
+      },
+      {
+        url: "/ClubGalleryPhotos/ArtTeam4.jpg",
+        caption: "Art Team community service",
+      },
+    ],
   },
   {
     id: "tech-team",
@@ -447,11 +775,30 @@ const clubsFromPage = [
     advisor: "Mr. Tech",
     memberCount: 18,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=tech",
-    imageUrl:
-      "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/TechTeam.jpg",
     tagline: "Powering the school's digital future",
     mission:
-      "To support the school's technology infrastructure and provide opportunities for students to develop technical skills.",
+      "To provide technical support and promote technology literacy within the school community.",
+    bannerUrl: "/ClubBannerPhoto/TechTeam.jpg",
+    coverUrl: "/ClubCoverPhotos/TechTeam.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/TechTeam1.jpg",
+        caption: "Tech Team project",
+      },
+      {
+        url: "/ClubGalleryPhotos/TechTeam2.jpg",
+        caption: "Tech Team workshop",
+      },
+      {
+        url: "/ClubGalleryPhotos/TechTeam3.jpg",
+        caption: "Tech Team collaboration",
+      },
+      {
+        url: "/ClubGalleryPhotos/TechTeam4.jpg",
+        caption: "Tech Team community service",
+      },
+    ],
   },
   {
     id: "media-team",
@@ -463,11 +810,30 @@ const clubsFromPage = [
     advisor: "Ms. Media",
     memberCount: 15,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=media",
-    imageUrl:
-      "https://images.unsplash.com/photo-1533750516457-a7f992034fec?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/MediaTeam.jpg",
     tagline: "Telling our school's story through media",
     mission:
-      "To document and share school events and achievements through various media channels.",
+      "To develop media production skills and create engaging content for the school community.",
+    bannerUrl: "/ClubBannerPhoto/MediaTeam.jpg",
+    coverUrl: "/ClubCoverPhotos/MediaTeam.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/MediaTeam1.jpg",
+        caption: "Media Team project",
+      },
+      {
+        url: "/ClubGalleryPhotos/MediaTeam2.jpg",
+        caption: "Media Team workshop",
+      },
+      {
+        url: "/ClubGalleryPhotos/MediaTeam3.jpg",
+        caption: "Media Team collaboration",
+      },
+      {
+        url: "/ClubGalleryPhotos/MediaTeam4.jpg",
+        caption: "Media Team community service",
+      },
+    ],
   },
   {
     id: "grizzlies-tv",
@@ -479,11 +845,30 @@ const clubsFromPage = [
     advisor: "Mr. Broadcast",
     memberCount: 12,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=grizzlies",
-    imageUrl:
-      "https://images.unsplash.com/photo-1586184059684-461bc7a3229c?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/GrizzliesTV.JPG",
     tagline: "Broadcasting Grizzly pride to the world",
     mission:
-      "To showcase school athletic events and achievements through quality video production and broadcasting.",
+      "To provide hands-on experience in video production and broadcasting while creating engaging content for the school community.",
+    bannerUrl: "/ClubBannerPhoto/GrizzliesTV.JPG",
+    coverUrl: "/ClubCoverPhotos/GrizzliesTV.JPG",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/GrizzliesTV1.png",
+        caption: "Grizzlies TV production",
+      },
+      {
+        url: "/ClubGalleryPhotos/GrizzliesTV2.png",
+        caption: "Grizzlies TV editing session",
+      },
+      {
+        url: "/ClubGalleryPhotos/GrizzliesTV3.png",
+        caption: "Grizzlies TV broadcast",
+      },
+      {
+        url: "/ClubGalleryPhotos/GrizzliesTV4.png",
+        caption: "Grizzlies TV interview",
+      },
+    ],
   },
   {
     id: "eco-club",
@@ -495,29 +880,30 @@ const clubsFromPage = [
     advisor: "Ms. Green",
     memberCount: 22,
     logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=eco",
-    imageUrl:
-      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&q=85&w=800&h=600",
+    imageUrl: "/ClubBannerPhoto/EcoClub.jpg",
     tagline: "Creating a sustainable future",
     mission:
-      "To promote environmental awareness and implement sustainable practices within our school and community.",
-  },
-  {
-    id: "chess-club",
-    name: "Chess Club",
-    category: "Creativity",
-    description:
-      "Learn chess strategies and compete in tournaments with other schools.",
-    meetingTimes: "Mondays & Wednesdays, 3:30 PM",
-    advisor: "Dr. Knight",
-    memberCount: 16,
-    logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=chess",
-    imageUrl:
-      "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&q=85&w=800&h=600",
-    tagline: "Developing strategic thinking through the royal game",
-    mission:
-      "To foster strategic thinking and competitive spirit through the game of chess, while building a community of passionate players.",
-    // This is the club that already has detailed data in ClubProfilePage.tsx
-    // We'll keep the existing detailed data for this club
+      "To promote environmental awareness and sustainability through education and action.",
+    bannerUrl: "/ClubBannerPhoto/EcoClub.jpg",
+    coverUrl: "/ClubCoverPhotos/EcoClub.jpg",
+    galleryImages: [
+      {
+        url: "/ClubGalleryPhotos/EcoClub1.jpg",
+        caption: "Eco Club meeting"
+      },
+      {
+        url: "/ClubGalleryPhotos/EcoClub2.jpg",
+        caption: "Eco Club workshop"
+      },
+      {
+        url: "/ClubGalleryPhotos/EcoClub3.jpg",
+        caption: "Eco Club competition"
+      },
+      {
+        url: "/ClubGalleryPhotos/EcoClub4.jpg",
+        caption: "Eco Club community service"
+      }
+    ],
   },
 ];
 
@@ -528,152 +914,119 @@ export const allClubsData: Record<string, ClubData> = {};
 allClubsData["chess-club"] = {
   id: "chess-club",
   name: "Chess Club",
-  tagline: "Develop strategic thinking through the royal game",
-  category: "Games & Recreation",
-  bannerUrl:
-    "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&q=85&w=1200",
-  logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=chess",
-  mission:
-    "Our mission is to foster strategic thinking and competitive spirit through the game of chess, while building a community of passionate players.",
+  tagline: "Master the game of kings",
   description:
-    "The Chess Club provides a welcoming environment for players of all skill levels to learn, practice, and compete. We offer regular training sessions, friendly matches, and opportunities to participate in interschool tournaments. Whether you're a beginner looking to learn the basics or an experienced player seeking challenging opponents, our club has something for everyone.",
-  meetingTimes: "Mondays & Wednesdays, 3:30 PM - 5:00 PM",
+    "The Chess Club provides a welcoming environment for students of all skill levels to learn, practice, and compete in chess. We focus on strategic thinking, problem-solving, and friendly competition.",
+  category: "Games & Recreation",
+  foundedYear: 2018,
+  memberCount: 24,
+  meetingTimes: "Mondays & Wednesdays, 3:30 PM",
   location: "Room 204, Student Center",
   advisor: "Dr. Knight",
-  memberCount: 24,
-  foundedYear: 2018,
+  mission:
+    "To foster strategic thinking and competitive spirit through the game of chess, while building a community of passionate players.",
+  bannerUrl: "/ClubBannerPhoto/ChessClub.jpg",
+  logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=chess",
+  imageUrl: "/ClubBannerPhoto/ChessClub.jpg",
+  galleryImages: [
+    {
+      url: "/ClubGalleryPhotos/ChessClub1.jpg",
+      caption: "Weekly chess tournament"
+    },
+    {
+      url: "/ClubGalleryPhotos/ChessClub2.jpg",
+      caption: "Strategy workshop"
+    },
+    {
+      url: "/ClubGalleryPhotos/ChessClub3.jpg",
+      caption: "Team practice session"
+    },
+    {
+      url: "/ClubGalleryPhotos/ChessClub4.jpg",
+      caption: "Inter-school competition"
+    }
+  ],
   leaders: [
     {
       name: "Sarah Chen",
       role: "President",
       photoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=sarah",
-      email: "sarah.chen@school.edu",
-    },
-    {
-      name: "Michael Wong",
-      role: "Vice President",
-      photoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=michael",
-      email: "michael.wong@school.edu",
+      email: "sarah.chen@school.edu"
     },
     {
       name: "Dr. Knight",
       role: "Faculty Advisor",
-      photoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=smith",
-      email: "dr.knight@school.edu",
-    },
+      photoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=knight",
+      email: "dr.knight@school.edu"
+    }
   ],
   upcomingEvents: [
     {
-      title: "Beginner's Workshop",
+      title: "Weekly Tournament",
       date: "June 15, 2024",
       time: "3:30 PM - 5:00 PM",
       location: "Room 204",
-      description:
-        "Learn the basics of chess, including piece movements, basic strategies, and common openings.",
+      description: "Join us for our weekly chess tournament. All skill levels welcome!"
     },
     {
-      title: "Friendly Tournament",
+      title: "Strategy Workshop",
       date: "June 22, 2024",
-      time: "1:00 PM - 5:00 PM",
+      time: "1:00 PM - 3:00 PM",
       location: "Student Center",
-      description:
-        "Participate in our monthly friendly tournament. Prizes for top three players!",
-    },
-    {
-      title: "Advanced Strategy Session",
-      date: "June 29, 2024",
-      time: "3:30 PM - 5:00 PM",
-      location: "Room 204",
-      description:
-        "Deep dive into advanced chess strategies and endgame techniques.",
-    },
-  ],
-  galleryImages: [
-    {
-      url: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&q=85&w=600",
-      caption: "Weekly club meeting",
-    },
-    {
-      url: "https://images.unsplash.com/photo-1580541631971-a0e1263c5b34?ixlib=rb-4.0.3&q=85&w=600",
-      caption: "Tournament finals",
-    },
-    {
-      url: "https://images.unsplash.com/photo-1638167821652-ad45431d6f21?ixlib=rb-4.0.3&q=85&w=600",
-      caption: "Chess workshop for beginners",
-    },
-    {
-      url: "https://images.unsplash.com/photo-1586165368502-1bad197a6461?ixlib=rb-4.0.3&q=85&w=600",
-      caption: "Interschool competition",
-    },
+      description: "Learn advanced chess strategies and tactics."
+    }
   ],
   testimonials: [
     {
-      quote:
-        "Joining the Chess Club has improved my critical thinking skills and introduced me to lifelong friends.",
-      name: "Emma Liu",
+      quote: "The Chess Club has helped me develop my strategic thinking and make great friends.",
+      name: "Alex Johnson",
       role: "Member since 2022",
-      avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=emma",
+      avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=alex"
     },
     {
-      quote:
-        "The supportive environment helped me go from a complete beginner to competing in tournaments within just one semester.",
-      name: "Jason Park",
+      quote: "A welcoming community for chess enthusiasts of all levels.",
+      name: "Maria Garcia",
       role: "Member since 2023",
-      avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=jason",
-    },
+      avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=maria"
+    }
   ],
   socialLinks: [
     { platform: "Instagram", url: "#", icon: "instagram" },
-    { platform: "Discord", url: "#", icon: "discord" },
-    { platform: "WeChat Group", url: "#", icon: "wechat" },
+    { platform: "Discord", url: "#", icon: "discord" }
   ],
   resources: [
     {
-      title: "Club Handbook",
-      description:
-        "Everything you need to know about our club rules, expectations, and activities.",
+      title: "Chess Strategy Guide",
+      description: "Comprehensive guide to chess strategies and tactics.",
       url: "#",
-      type: "document",
+      type: "document"
     },
     {
-      title: "Beginner's Guide to Chess",
-      description: "A comprehensive guide for those new to the game.",
+      title: "Online Chess Resources",
+      description: "Links to helpful chess learning resources.",
       url: "#",
-      type: "document",
-    },
-    {
-      title: "Chess.com",
-      description: "Practice your skills online between meetings.",
-      url: "https://chess.com",
-      type: "link",
-    },
+      type: "link"
+    }
   ],
   opportunities: [
     {
       title: "Tournament Organizer",
-      description: "Help plan and run our monthly tournaments.",
-      commitment: "3-5 hours per month",
+      description: "Help organize and run chess tournaments.",
+      commitment: "2-3 hours per week"
     },
     {
-      title: "Beginner's Coach",
-      description: "Mentor new members and help them learn the basics.",
-      commitment: "1-2 hours per week",
-    },
+      title: "Beginner Mentor",
+      description: "Mentor new members in learning chess basics.",
+      commitment: "1-2 hours per week"
+    }
   ],
   achievements: [
     {
-      title: "District Championship",
-      date: "May 2023",
-      description: "First place in the district chess championship",
-    },
-    {
-      title: "Regional Finalist",
-      date: "November 2023",
-      description: "Second place in the regional tournament",
-    },
-  ],
-  imageUrl:
-    "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?ixlib=rb-4.0.3&q=85&w=800&h=600",
+      title: "State Championship",
+      date: "December 2023",
+      description: "First place in the state collegiate chess championship"
+    }
+  ]
 };
 
 // Add coding club
@@ -684,7 +1037,7 @@ allClubsData["coding-club"] = {
   category: "Creativity",
   bannerUrl:
     "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&q=85&w=1200",
-  logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=coding",
+  logoUrl: "/ClubLogos/CodingClub.png",
   mission:
     "Our mission is to foster computational thinking and programming skills while building a supportive community of young developers.",
   description:
@@ -748,21 +1101,21 @@ allClubsData["coding-club"] = {
   ],
   galleryImages: [
     {
-      url: "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&q=85&w=600",
-      caption: "Club members working on a coding project",
+      url: "/ClubGalleryPhotos/CodingClub1.png",
+      caption: "Coding Club workshop"
     },
     {
-      url: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&q=85&w=600",
-      caption: "Our hackathon winners",
+      url: "/ClubGalleryPhotos/CodingClub2.png",
+      caption: "Coding Club hackathon"
     },
     {
-      url: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&q=85&w=600",
-      caption: "Learning web development",
+      url: "/ClubGalleryPhotos/CodingClub3.png",
+      caption: "Coding Club competition"
     },
     {
-      url: "https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?ixlib=rb-4.0.3&q=85&w=600",
-      caption: "Pair programming session",
-    },
+      url: "/ClubGalleryPhotos/CodingClub4.png",
+      caption: "Coding Club project showcase"
+    }
   ],
   testimonials: [
     {
@@ -842,6 +1195,95 @@ allClubsData["coding-club"] = {
   ],
   imageUrl:
     "https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&q=85&w=800&h=600",
+};
+
+// Add Reptile Club
+allClubsData["reptile-club"] = {
+  id: "reptile-club",
+  name: "Reptile Club",
+  tagline: "Exploring the fascinating world of reptiles",
+  description:
+    "The Reptile Club is dedicated to learning about and caring for reptiles. We study different species, their habitats, and proper care techniques. Our activities include reptile handling sessions, educational workshops, and field trips to reptile exhibits.",
+  category: "Science",
+  foundedYear: 2019,
+  memberCount: 14,
+  meetingTimes: "Every Wednesday, 3:30 PM",
+  location: "Room 105, Science Building",
+  advisor: "Dr. Scales",
+  mission:
+    "To promote understanding and appreciation of reptiles through education and hands-on experiences.",
+  bannerUrl: "/ClubBannerPhoto/ReptileClub.jpg",
+  logoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=reptile",
+  imageUrl: "/ClubBannerPhoto/ReptileClub.jpg",
+  galleryImages: [
+    {
+      url: "/ClubGalleryPhotos/ReptileClub1.jpg",
+      caption: "Reptile Club meeting"
+    },
+    {
+      url: "/ClubGalleryPhotos/ReptileClub2.jpg",
+      caption: "Reptile Club activity"
+    },
+    {
+      url: "/ClubGalleryPhotos/ReptileClub3.jpg",
+      caption: "Reptile Club workshop"
+    },
+    {
+      url: "/ClubGalleryPhotos/ReptileClub4.jpg",
+      caption: "Reptile Club field trip"
+    }
+  ],
+  leaders: [
+    {
+      name: "Dr. Scales",
+      role: "Faculty Advisor",
+      photoUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=scales",
+      email: "dr.scales@school.edu",
+    },
+  ],
+  upcomingEvents: [
+    {
+      title: "Reptile Handling Workshop",
+      date: "June 20, 2024",
+      time: "3:30 PM - 5:00 PM",
+      location: "Room 105",
+      description: "Learn proper handling techniques for different reptile species.",
+    },
+  ],
+  testimonials: [
+    {
+      quote: "The Reptile Club has given me a deeper appreciation for these amazing creatures and their role in our ecosystem.",
+      name: "Alex Thompson",
+      role: "Member since 2022",
+      avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=alex",
+    },
+  ],
+  socialLinks: [
+    { platform: "Instagram", url: "#", icon: "instagram" },
+    { platform: "Discord", url: "#", icon: "discord" },
+  ],
+  resources: [
+    {
+      title: "Reptile Care Guide",
+      description: "Comprehensive guide to reptile care and handling.",
+      url: "#",
+      type: "document" as const,
+    },
+  ],
+  opportunities: [
+    {
+      title: "Reptile Care Assistant",
+      description: "Help maintain and care for our reptile collection.",
+      commitment: "2-3 hours per week",
+    },
+  ],
+  achievements: [
+    {
+      title: "Educational Excellence Award",
+      date: "May 2023",
+      description: "Recognized for outstanding educational programs about reptiles",
+    },
+  ],
 };
 
 // Generate data for all other clubs

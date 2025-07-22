@@ -1,5 +1,5 @@
-import { Suspense, useState, useEffect, createContext } from "react";
-import { useRoutes, Routes, Route } from "react-router-dom";
+import { Suspense, createContext, ReactNode, useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import Home from "./components/home";
 import ClubsPage from "./components/ClubsPage";
 import ClubProfilePage from "./components/ClubProfilePage";
@@ -7,45 +7,76 @@ import BookmarksPage from "./components/BookmarksPage";
 import About from "./components/About";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import routes from "tempo-routes";
-import ClubProfileModal from "./components/ClubProfileModal";
-import { ClubData } from "./components/ClubProfileModal";
-import { allClubsData } from "./data/clubsData";
+import UserProfile from "./components/UserProfile";
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import { NotificationProvider } from "./contexts/NotificationContext";
+import {
+  fetchUserBookmarks,
+  addBookmark,
+  removeBookmark,
+} from "./lib/supabase-client";
+import ErrorBoundary from "./components/ErrorBoundary";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 import Layout from "./components/layout";
+import { ParallaxProvider } from "react-scroll-parallax";
 
 // Define BookmarkContext before it's used in the App component
 export const BookmarkContext = createContext<{
   bookmarkedClubs: Record<string, boolean>;
   toggleBookmark: (clubId: string) => void;
   isBookmarked: (clubId: string) => boolean;
+  loading: boolean;
 }>({
   bookmarkedClubs: {},
-  toggleBookmark: () => {},
+  toggleBookmark: () => { },
   isBookmarked: () => false,
+  loading: false,
 });
 
-function App() {
-  const [selectedClub, setSelectedClub] = useState<ClubData | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [bookmarkedClubs, setBookmarkedClubs] = useState<
-    Record<string, boolean>
-  >({});
+interface BookmarkProviderProps {
+  children: ReactNode;
+}
 
-  // Load bookmarked clubs from localStorage on initial render
+function BookmarkProvider({ children }: BookmarkProviderProps) {
+  const [bookmarkedClubs, setBookmarkedClubs] = useState<Record<string, boolean>>({});
+  const [loading, setLoading] = useState(false);
+  const { user } = useAuth();
+
   useEffect(() => {
-    const savedBookmarks = localStorage.getItem("bookmarkedClubs");
-    if (savedBookmarks) {
-      setBookmarkedClubs(JSON.parse(savedBookmarks));
-    }
-  }, []);
+    const loadUserBookmarks = async () => {
+      if (user) {
+        setLoading(true);
+        try {
+          const bookmarkIds = await fetchUserBookmarks(user.id);
+          const bookmarksRecord: Record<string, boolean> = {};
+          bookmarkIds.forEach((id) => {
+            bookmarksRecord[id] = true;
+          });
+          setBookmarkedClubs(bookmarksRecord);
+        } catch (error) {
+          console.error("Error loading user bookmarks:", error);
+        } finally {
+          setLoading(false);
+        }
+      } else {
+        const savedBookmarks = localStorage.getItem("bookmarkedClubs");
+        if (savedBookmarks) {
+          setBookmarkedClubs(JSON.parse(savedBookmarks));
+        } else {
+          setBookmarkedClubs({});
+        }
+      }
+    };
+    loadUserBookmarks();
+  }, [user]);
 
-  // Save bookmarked clubs to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem("bookmarkedClubs", JSON.stringify(bookmarkedClubs));
   }, [bookmarkedClubs]);
 
-  const toggleBookmark = (clubId: string) => {
+  const toggleBookmark = async (clubId: string) => {
+    const isCurrentlyBookmarked = bookmarkedClubs[clubId];
     setBookmarkedClubs((prev) => {
       const newBookmarks = { ...prev };
       if (newBookmarks[clubId]) {
@@ -55,54 +86,68 @@ function App() {
       }
       return newBookmarks;
     });
+
+    if (user) {
+      try {
+        const success = isCurrentlyBookmarked
+          ? await removeBookmark(user.id, clubId)
+          : await addBookmark(user.id, clubId);
+
+        if (!success) {
+          // Revert optimistic update on failure
+          setBookmarkedClubs((prev) => {
+            const newBookmarks = { ...prev };
+            if (isCurrentlyBookmarked) {
+              newBookmarks[clubId] = true;
+            } else {
+              delete newBookmarks[clubId];
+            }
+            return newBookmarks;
+          });
+        }
+      } catch (error) {
+        console.error("Error updating bookmark:", error);
+      }
+    }
   };
 
-  const isBookmarked = (clubId: string) => {
-    return !!bookmarkedClubs[clubId];
-  };
-
-  const handleClubSelect = (clubId: string) => {
-    setSelectedClub(allClubsData[clubId]);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  const isBookmarked = (clubId: string) => !!bookmarkedClubs[clubId];
 
   return (
     <BookmarkContext.Provider
-      value={{ bookmarkedClubs, toggleBookmark, isBookmarked }}
+      value={{ bookmarkedClubs, toggleBookmark, isBookmarked, loading }}
     >
-      <Suspense fallback={<p>Loading...</p>}>
-        <Layout>
-          <Routes>
-            <Route
-              path="/"
-              element={<Home onClubSelect={handleClubSelect} />}
-            />
-            <Route
-              path="/clubs"
-              element={<ClubsPage onClubSelect={handleClubSelect} />}
-            />
-            <Route path="/club/:clubId" element={<ClubProfilePage />} />
-            <Route path="/bookmarks" element={<BookmarksPage />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-          </Routes>
-          {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
-          {selectedClub && (
-            <ClubProfileModal
-              isOpen={isModalOpen}
-              onClose={handleCloseModal}
-              clubData={selectedClub}
-              isLoading={false}
-            />
-          )}
-        </Layout>
-      </Suspense>
+      {children}
     </BookmarkContext.Provider>
+  );
+}
+
+function App() {
+  return (
+    <ErrorBoundary>
+      <AuthProvider>
+        <NotificationProvider>
+          <BookmarkProvider>
+            <Suspense fallback={<LoadingSpinner fullScreen size="large" />}>
+              <ParallaxProvider>
+                <Layout>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/clubs" element={<ClubsPage />} />
+                    <Route path="/club/:slug" element={<ClubProfilePage />} />
+                    <Route path="/bookmarks" element={<BookmarksPage />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/profile" element={<UserProfile />} />
+                  </Routes>
+                </Layout>
+              </ParallaxProvider>
+            </Suspense>
+          </BookmarkProvider>
+        </NotificationProvider>
+      </AuthProvider>
+    </ErrorBoundary>
   );
 }
 

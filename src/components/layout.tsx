@@ -1,5 +1,6 @@
 import { AuroraBackground } from "./ui/aurora-background";
 import { useLocation } from "react-router-dom";
+import React, { useLayoutEffect } from 'react';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -8,6 +9,11 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
+
+  // Scroll to top on route change
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <AuroraBackground>
