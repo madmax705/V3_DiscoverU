@@ -30,7 +30,7 @@ DiscoverU catalogs all student-led and teacher-supervised clubs and ECAs, making
 - **Modern UI:** ⚡ Fast, responsive, and easy to use.
 - **Authentication:** 🔐 Secure login and signup for personalized features.
 - **Gallery:** 🖼️ Visual showcase of club activities and events.
-- **Club Ratings:** ⭐ Interactive 1-5 star rating system for clubs, with average ratings, rating statistics, and real-time updates to help students make informed decisions and provide feedback to organizers.
+- **Club Ratings:** ⭐ Rate clubs and view average ratings and statistics.
 - **Contact & Social:** 📬 Connect with club leaders and follow DiscoverU on Instagram.
 
 ## Visit Us Online 🌐
