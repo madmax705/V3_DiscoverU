@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     {
       name: 'add-nojekyll',
-      writeBundle() {
+      closeBundle() {
         copyFileSync('.nojekyll', 'dist/.nojekyll');
       }
     }
