@@ -4,7 +4,7 @@ import path from "path";
 import { copyFileSync } from "fs";
 
 export default defineConfig({
-  base: '/DiscoverU/',
+  base: '/',
   plugins: [
     react(),
     {
