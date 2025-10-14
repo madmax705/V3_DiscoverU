@@ -12,7 +12,7 @@ window.supabase = supabase;
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter basename={/DiscoverU}>
+    <BrowserRouter basename={basename}>
       <App />
     </BrowserRouter>
   </React.StrictMode>,
