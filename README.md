@@ -35,7 +35,7 @@ DiscoverU catalogs all student-led and teacher-supervised clubs and ECAs, making
 
 ## Visit Us Online 🌐
 
-DiscoverU is live at [https://discoveru.club](https://discover-u.vercel.app/) — no installation required! Just visit the site and start exploring clubs and activities at SUIS Gubei.
+DiscoverU is live at [https://discover-u.vercel.app/](https://discover-u.vercel.app/) — no installation required! Just visit the site and start exploring clubs and activities at SUIS Gubei.
 
 ## Project Structure 🗂️
 
